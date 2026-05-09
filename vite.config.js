@@ -3,11 +3,6 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  server: {
-    proxy: {
-      '/api': 'http://localhost:3000'
-    }
-  },
   plugins: [
     react(),
     VitePWA({
@@ -15,7 +10,6 @@ export default defineConfig({
       manifest: {
         name: 'Daily Productivity Tracker',
         short_name: 'Tracker',
-        description: 'Track your productive hours daily',
         theme_color: '#0A0A0F',
         background_color: '#0A0A0F',
         display: 'standalone',
@@ -26,11 +20,8 @@ export default defineConfig({
         ]
       }
     })
-  ]
-})import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
+  ],
+  build: {
+    outDir: 'dist'
+  }
 })
